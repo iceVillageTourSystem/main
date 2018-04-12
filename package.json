@@ -1,0 +1,11 @@
+{
+  "name": "ice-village-program",
+  "version": "1.0.0",
+  "description": "a graduated system design maked by koa and react",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Owen <469564715@qq.com> (http://numerhero.github.io/)",
+  "license": "MIT"
+}
