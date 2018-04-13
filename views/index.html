@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>黑龙江雪乡管理系统</title>
+</head>
+<body>
+  <h1>Hello World!</h1>
+</body>
+<script>
+  fetch('/loginIn', {
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify({username: 'owen'})
+  }).then(d => {
+    console.log(d);
+  })
+</script>
+</html>

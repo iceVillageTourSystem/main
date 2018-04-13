@@ -4,15 +4,15 @@ const app = new Koa();
 // bodyparser
 const bodyparser = require('koa-bodyparser');
 
-app.use(bodyparser())
+app.use(bodyparser());
 
 // router层
 const router = require('koa-router')();
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
-app.use(indexRouter.routes(), indexRouter.allowedMethods());
-app.use(apiRouter.routes(), apiRouter.allowedMethods());
+app.use(indexRouter.routes(), indexRouter.allowedMethods())
+   .use(apiRouter.routes(), apiRouter.allowedMethods());
 
 router.get("*", (req, res) => {
   res.end("404!!!!");

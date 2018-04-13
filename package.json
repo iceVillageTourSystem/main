@@ -10,11 +10,15 @@
   "author": "Owen <469564715@qq.com> (http://numerhero.github.io/)",
   "license": "MIT",
   "dependencies": {
+    "antd": "^3.4.1",
     "cookie-parser": "^1.4.3",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "mysql2": "^1.5.3",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "sequelize": "^4.37.6"
   }
 }
