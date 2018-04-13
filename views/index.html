@@ -6,12 +6,20 @@
 </head>
 <body>
   <h1>Hello World!</h1>
+  <form>
+    <span>用户名</span><input type="text"><br>
+    <span>密码</span><input type="password"><br>
+    <button>登陆</button>
+  </form>
 </body>
 <script>
   fetch('/loginIn', {
     method: 'POST',
+    headers: {
+         "Content-Type": "application/json"
+    },
     credentials: 'include',
-    body: JSON.stringify({username: 'owen'})
+    body: JSON.stringify({username: 'mingsming',password: 12346})
   }).then(d => {
     console.log(d);
   })

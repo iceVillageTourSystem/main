@@ -1,7 +1,6 @@
 // 提供各种api
 
 const router = require('koa-router')();
-const {createUser, hasTheUser} = require('../dao/user');
 const errid = require('../errorids');
 
 router.get('/owen', async (ctx, next) => {

@@ -3,8 +3,11 @@ const app = new Koa();
 
 // bodyparser
 const bodyparser = require('koa-bodyparser');
-
-app.use(bodyparser());
+app.use(bodyparser({
+  onerror: function (err, ctx) {
+    ctx.throw('body parse error', err);
+  }
+}));
 
 // router层
 const router = require('koa-router')();

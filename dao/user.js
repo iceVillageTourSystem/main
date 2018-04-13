@@ -28,12 +28,24 @@ const createUser = async function (data) {
 }
 
 const hasTheUser = async function (username) {
-  return User.findOne({
+  let result = false;
+
+  return await User.findOne({
     where: {username}
+  }).then(d => {
+    result = (d !== null) ? true : false;
+    return result;
+  })
+}
+
+const checkIn = async function (username, password) {
+  return User.findOne({
+    where: {username, password}
   })
 }
 
 module.exports = {
   createUser,
-  hasTheUser
+  hasTheUser,
+  checkIn
 }

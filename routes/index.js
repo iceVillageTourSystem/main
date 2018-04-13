@@ -1,6 +1,11 @@
 const router = require('koa-router')();
+const {createUser, hasTheUser, checkIn} = require('../dao/user');
+
 const fs = require('fs');
 const path = require('path');
+
+const {isEmptyObject} = require('../toolfuncs.js');
+const errid = require('../errorids');
 
 router
   .get('/', (ctx, next) => {
@@ -15,43 +20,73 @@ router
   })
   .post('/loginIn', async (ctx, next) => {
     let userId = ctx.cookies.get('id');
-  })
-// .post('/register', async (ctx, next) => {
-//   let data = ctx.request.body;
-//   if(Object.keys(data).length) {
-//     let {username, password, isManager} = data;
-//     if(!hasTheUser(username)) {
-//       createUser({
-//         username,
-//         password,
-//         isManager
-//       }).then(d => {
-//         console.log(`create user done the username was ${username}`);
-//         result = {
-//           status: 0,
-//           msg: errid(0)
-//         }  
-//       }).catch(err => {
-//         result = {
-//           status: 11111,
-//           msg: errid(11111)
-//         }
-//       })
-//     } else {
-//       result = {
-//         status: 10002,
-//         msg: errid(10002)
-//       }  
-//     } 
-    
-//   } else {
-//      result = {
-//       status: 10001,
-//       msg: errid(10001)
-//     }
-//   }
+    let data = ctx.request.body;
+    let result = {};
 
-//   ctx.body = result;
-// });
+    let {username, password} = data;
+    if(!isEmptyObject(data)) {
+      await checkIn(username, password)
+      .then(d => {
+        if(d) {
+          // 匹配成功
+          result = {
+            status: 0,
+            msg: errid[0]
+          }
+        } else {
+          result = {
+            status: 10003,
+            msg: errid[10003]
+          }  
+        }
+        ctx.body = result;
+      })
+    } else {
+      ctx.body = {
+        status: 10001,
+        msg: errid[10001]
+      }
+    }
+  })
+.post('/register', async (ctx, next) => {
+  let data = ctx.request.body;
+  if(!isEmptyObject(data)) {
+    let {username, password, isManager} = data;
+    await hasTheUser(username)
+    .then(async function (r) {
+        if(!r) {
+          await createUser({
+            username,
+            password,
+            isManager
+          }).then(d => {
+            console.log(`\n Create user done! The username was ${username} \n`);
+            result = {
+              status: 0,
+              msg: errid[0]
+            }  
+          }).catch(err => {
+            result = {
+              status: 11111,
+              msg: errid[11111]
+            }
+          })
+      } else {
+        console.log('\n It has a user who \'s name was ${username} \n');
+        result = {
+          status: 10002,
+          msg: errid[10002]
+        }  
+      }
+    })
+
+    ctx.body = result;
+  } else {
+     ctx.body = {
+      status: 10001,
+      msg: errid[10001]
+    }
+  }
+});
 
 module.exports = router;
