@@ -4,12 +4,15 @@
   "description": "a graduated system design maked by koa and react",
   "main": "app.js",
   "scripts": {
+    "test": "nodemon app.js",
     "start": "node app.js"
   },
   "author": "Owen <469564715@qq.com> (http://numerhero.github.io/)",
   "license": "MIT",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.6"

@@ -1,6 +1,11 @@
 const Koa = require('koa');
 const app = new Koa();
 
+// bodyparser
+const bodyparser = require('koa-bodyparser');
+
+app.use(bodyparser())
+
 // router层
 const router = require('koa-router')();
 const indexRouter = require('./routes/index');

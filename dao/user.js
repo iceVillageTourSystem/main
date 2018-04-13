@@ -27,7 +27,13 @@ const createUser = async function (data) {
   })
 }
 
+const hasTheUser = async function (username) {
+  return User.findOne({
+    where: {username}
+  })
+}
 
 module.exports = {
-  createUser
+  createUser,
+  hasTheUser
 }
