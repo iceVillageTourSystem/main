@@ -5,23 +5,10 @@
   <title>黑龙江雪乡管理系统</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <form>
-    <span>用户名</span><input type="text"><br>
-    <span>密码</span><input type="password"><br>
-    <button>登陆</button>
-  </form>
+  <div class="demo"></div>
 </body>
+<script src="../dist/bundle.js"></script>
 <script>
-  fetch('/loginIn', {
-  method: 'POST',
-  headers: {
-       "Content-Type": "application/json"
-  },
-  credentials: 'include',
-  body: JSON.stringify({username: 'mingsming',password: 12346})
-}).then(d => {
-  // do something
-})
+
 </script>
 </html>
