@@ -9,16 +9,27 @@ app.use(bodyparser({
   }
 }));
 
+// session 会话控制
+const session = require('koa-session');
+const sessionConfig = require('./sessionConfig')
+app.keys = ['secret super star'];
+app.use(session(sessionConfig, app));
+app.use(async (ctx, next) => {
+  if(!ctx.session.users) {
+    ctx.session.users = {};
+  }
+
+  await next();    
+})
+
 // router层
 const router = require('koa-router')();
-const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+const initRouter = require('./routes/index');
 
-app.use(indexRouter.routes(), indexRouter.allowedMethods())
-   .use(apiRouter.routes(), apiRouter.allowedMethods());
+app.use(initRouter.routes(), initRouter.allowedMethods())
 
-router.get("*", (req, res) => {
-  res.end("404!!!!");
+router.get("*", (ctx, next) => {
+  ctx.body = "404!!!!";
 });
 
 

@@ -25,3 +25,33 @@ react + antd + webpack
 
 koa + mysql + sequelize
 
+## 后端接口
+
+### 登陆 和 注册
+
+/loginIn 
+
+/register
+
+入参皆为 一个JSON
+
+{
+  username: 'owen',
+  password: 10234  
+}
+
+前端交互演示：(注册和登陆相同)
+
+```
+fetch('/loginIn', {
+  method: 'POST',
+  headers: {
+       "Content-Type": "application/json"
+  },
+  credentials: 'include',
+  body: JSON.stringify({username: 'mingsming',password: 12346})
+}).then(d => {
+  // do something
+})
+```
+
