@@ -1,3 +1,4 @@
+const path = require('path');
 const Koa = require('koa');
 const app = new Koa();
 
@@ -32,5 +33,10 @@ router.get("*", (ctx, next) => {
   ctx.body = "404!!!!";
 });
 
+// 处理静态文件
+const serve = require('koa-static');
+app.use(serve(path.resolve(__dirname, 'dist')))
+   .use(serve(path.resolve(__dirname, 'node_modules')))
+   .use(serve(path.resolve(__dirname, 'views')))
 
 app.listen(3000, () => console.info('system was ready now!'));
