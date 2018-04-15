@@ -7,7 +7,6 @@ import { Button } from 'antd';
 import styles from './loginAndRegister.less';
 import DocumentTitle from 'react-document-title';
 
-console.log(styles);
 
 class LoginAndRegister extends Component {
   constructor(props) {
@@ -23,4 +22,4 @@ class LoginAndRegister extends Component {
   }
 }
 
-export default LoginAndRegister
+export default LoginAndRegister;
