@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import LoginAndRegister from './loginAndRegister.jsx';
 import Index from './index.jsx';
+import 'reset-css';
+// import 'antd/dist/antd.css';
 
 class WindowWrap extends Component {
   constructor(props) {

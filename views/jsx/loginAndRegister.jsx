@@ -17,7 +17,8 @@ class LoginAndRegister extends Component {
 
   render() {
     return (<DocumentTitle title={'登陆&注册'}>
-        <div className={styles.container}></div>
+        <div className={styles.container}>
+        </div>
       </DocumentTitle>);
   }
 }

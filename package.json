@@ -29,6 +29,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
+    "reset-css": "^3.0.0",
     "sequelize": "^4.37.6",
     "style-loader": "^0.20.3"
   },
