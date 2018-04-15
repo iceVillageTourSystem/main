@@ -6,6 +6,7 @@ html, body {
 .container {
   display: flex;
   flex-flow: column wrap;
+  padding-top: 112px;
   min-height: 100%;
   background: #f0f2f5;  
 }
@@ -20,9 +21,7 @@ html, body {
 }
 
 .header {
-  height: 44px;
   line-height:  44px;
-  padding: 112px 0 24px 0;
 }
 
 .headerWrap {
@@ -52,4 +51,27 @@ html, body {
   margin-top: 12px;
   margin-bottom: 40px;
   text-align: center;
+}
+
+.opBox {
+  margin: 0 auto;
+  padding: 25px 0;
+  :global(.ant-menu) :global(.ant-menu-item:nth-of-type(1)) {
+    margin-right: 35px
+  }
+}
+
+.inputBox {
+  margin: 0 auto;
+  div:nth-of-type(1) {
+    height: 200px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+
+    :global(.ant-input-affix-wrapper) {
+      min-width: 300px;
+      height: 35px;
+    }
+  }
 }
