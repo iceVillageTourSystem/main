@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Button } from 'antd';
 import styles from './loginAndRegister.less';
 import DocumentTitle from 'react-document-title';
+
+console.log(styles);
+
 class LoginAndRegister extends Component {
   constructor(props) {
     super(props)
