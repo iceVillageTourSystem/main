@@ -46,7 +46,10 @@ module.exports = {
         use: [
           {loader: 'style-loader'},
           {loader: "css-loader?modules&localIdentName=[local]-[hash:base64:5]"},
-          {loader: "less-loader" , options: { javascriptEnabled: true }} // 允许less 内写js脚本
+          {loader: "less-loader" , options: {
+            javascriptEnabled: true,
+            inlineJavaScript: true
+          }} // 允许less 内写js脚本
         ]
       },
     //   {
