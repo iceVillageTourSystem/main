@@ -52,33 +52,7 @@ class Info extends Component {
             pagination={false} 
             />
         </div>
-        // <div>
-        //     12
-        // </div>
     );
   }
 }
 export default Info;
-
-/*<ul>
-            <li>
-                <label class={styles.label}>组织名称：</label>
-                <span class={styles.label}>{this.state.epName}</span>
-            </li>
-            <li>
-                <label>组织地址：</label>
-                <span>{this.state.address}</span>
-            </li>
-            <li>
-                <label>联系电话：</label>
-                <span>{this.state.phone}</span>
-            </li>
-            <li>
-                <label>法人代表：</label>
-                <span>{this.state.leader}</span>
-            </li>
-            <li>
-                <label>员工人数：</label>
-                <span>{this.state.epNum}</span>
-            </li>
-        </ul>*/
