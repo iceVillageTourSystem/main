@@ -3,18 +3,9 @@ import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-// <Router>
-//   <div>
-//     <ul>
-//       <li><Link to="/">登陆页面</Link></li>
-//       <li><Link to="/sss">ssss</Link></li>
-//     </ul>
-
-//     <Route path="/" component={loginAndRegister} />
-//     <Route path="/sss" component={sss} />
-
-//   </div>
-// </Router>
+import SideBar from './components/sideBar';
+import Content from './components/content';
+import styles from './index.less';
 
 class Index extends Component {
   constructor(props) {
@@ -24,7 +15,21 @@ class Index extends Component {
 
 
   render() {
-    return (<h3>主页面</h3>);
+    return (
+      <Router>
+        <div className={styles.container}>
+          <ul className={styles.sidebar}>
+            <li ></li>
+            <li><Link to="/">登陆页面</Link></li>
+            <li><Link to="/sss">ssss</Link></li>
+          </ul>
+          <div className={styles.Content}>
+            <Route path="/" component={SideBar} />
+            <Route path="/sss" component={Content} />
+          </div>
+        </div>
+      </Router>
+    );
   }
 }
 

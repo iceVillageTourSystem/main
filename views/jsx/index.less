@@ -1,6 +1,22 @@
 @import '~antd/lib/style/themes/default.less';
 
-.logo {
-    width: 255px;
-    background-color: bisque
+
+.container {
+    width: 1080px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -540px;
+
+    & .sidebar {
+        border-right: 1px solid red;        
+        width: 120px;
+        float: left;
+    }
+
+    & .Content {
+        border-right: 1px solid red;        
+        width: 950px;
+        float: right;
+    }
 }
