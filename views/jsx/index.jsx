@@ -42,7 +42,7 @@ class Index extends Component {
             <Layout>
               <Header>Header</Header>
               <Content>
-                <Route path="/" component={Info} />
+                <Route path="/" component={Query} />
                 <Route path="/query" component={Query} />
                 <Route path="/chart" component={Chart} />
               </Content>
