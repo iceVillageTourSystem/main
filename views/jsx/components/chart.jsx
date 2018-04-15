@@ -7,7 +7,7 @@ import { Button } from 'antd';
 import DocumentTitle from 'react-document-title';
 
 
-class SiderBar extends Component {
+class Chart extends Component {
   constructor(props) {
     super(props)
    
@@ -19,4 +19,4 @@ class SiderBar extends Component {
         <div>3333</div>);
   }
 }
-export default SiderBar;
+export default Chart;

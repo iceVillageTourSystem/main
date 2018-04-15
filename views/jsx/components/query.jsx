@@ -7,7 +7,7 @@ import { Button } from 'antd';
 import DocumentTitle from 'react-document-title';
 
 
-class Content extends Component {
+class Query extends Component {
   constructor(props) {
     super(props)
    
@@ -19,4 +19,4 @@ class Content extends Component {
         <div>1212</div>);
   }
 }
-export default Content;
+export default Query;

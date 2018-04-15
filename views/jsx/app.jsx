@@ -27,7 +27,7 @@ class WindowWrap extends Component {
     //   <Index /> : <LoginAndRegister />
     
 
-    return (<LoginAndRegister />);
+    return (<Index />);
   }
 }
 
