@@ -11,28 +11,6 @@ const columns = [{
     dataIndex: 'name',
     key: 'name',
     render: text => <a href="javascript:;">{text}</a>,
-  }, {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  }, {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a href="javascript:;">Action 一 {record.name}</a>
-        <Divider type="vertical" />
-        <a href="javascript:;">Delete</a>
-        <Divider type="vertical" />
-        <a href="javascript:;" className="ant-dropdown-link">
-          More actions <Icon type="down" />
-        </a>
-      </span>
-    ),
   }];
   
 class Info extends Component {
@@ -43,13 +21,16 @@ class Info extends Component {
 
   state = {
       columns: ['a','b'],
-      data: ['a','b']
+      data: [{
+        name: 'z',
+        key: "1"
+      }]
   }
   
 
   render() {
     return (
-        <Table columns={this.state.columns} dataSource={this.state.data} />
+        <Table columns={columns} dataSource={this.state.data} />
         // <div>
         //     12
         // </div>
