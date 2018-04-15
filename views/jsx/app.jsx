@@ -3,37 +3,35 @@ import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import {
-  windowWrap
-} from './windowWrap.jsx'
+import LoginAndRegister from './loginAndRegister.jsx';
+import Index from './index.jsx';
 
-// class index extends Component{
-//   render() {
-//     return <h3>我是主页面</h3>
-//   }
-// }
+class WindowWrap extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isUserLogin: false
+    }
+  }
 
-// class sss extends Component{
-//   render() {
-//     return <h3>sssss</h3>
-//   }
-// }
+  compontWillMount() {
+    // 检查是否已经登陆
+  }
 
-// <Router>
-//   <div>
-//     <ul>
-//       <li><Link to="/">登陆页面</Link></li>
-//       <li><Link to="/sss">ssss</Link></li>
-//     </ul>
+  render() {
+    let {isUserLogin} = this.state;
+    let result;
 
-//     <Route path="/" component={loginAndRegister} />
-//     <Route path="/sss" component={sss} />
+    // result = isUserLogin ?
+    //   <Index /> : <LoginAndRegister />
+    
 
-//   </div>
-// </Router>
+    return (<LoginAndRegister />);
+  }
+}
 
 render(
-  <windowWrap />,
+  <WindowWrap />,
 	document.querySelector('.demo'),
 	()=> console.log(">>>>>>　页面渲染已经完成　<<<<<<")
 );

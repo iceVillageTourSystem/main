@@ -25,18 +25,29 @@ module.exports = {
         test: /\.jsx?$/,
         // 需要进行babel-loader
         include: [
-          path.resolve(__dirname, "views/jsx/app.jsx")
+          path.resolve(__dirname, "views/")
+          
         ],
         // 不需要进行babel-loader
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ["es2015","stage-0","react"]
+          presets: ["react","es2015","stage-0"],
+          plugins: [
+            ['import', {
+              libraryName: 'antd',
+              style: 'css'
+            }]
+          ]
         },
       },
       {
-        test: /\.less$/,
-        use: [{loader: 'style-loader'}, {loader: "css-loader"}, {loader: "less-loader"}]
+        test: /\.(less|css)$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: "css-loader"},
+          {loader: "less-loader"}
+        ]
       },
     //   {
     //     test: /\.html$/,

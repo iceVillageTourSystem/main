@@ -7,20 +7,23 @@ const path = require('path');
 const {
   isEmptyObject,
   setSession,
-  jsonResponse
+  jsonResponse,
+  htmlResponse
 } = require('../toolfuncs.js');
 
 const errid = require('../errorids');
 
 router
   .get('/', (ctx, next) => {
-    ctx.type = 'text/html;charset=utf-8';
-    ctx.response.set('Content-type', 'text/html;charset=utf-8');
-    ctx.body = fs.readFileSync(path.resolve(__dirname,'../views/index.html'));
-    
     // 记录网站pv
     let n = ctx.session.views || 0;
     ctx.session.views = ++n;
+    
+    htmlResponse(ctx);
+    ctx.body = fs.readFileSync(path.resolve(__dirname,'../views/index.html'));     
+
+      // ctx.redirect('/loginAndRegister');
+      // ctx.status = 301;
   })
   .redirect('/index', '/')
   .post('/checkLogin', async () => {
