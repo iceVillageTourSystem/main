@@ -5,11 +5,46 @@
     min-height: 100%;
 }
 
+
+:global(.ant-menu-inline-collapsed .ant-menu-item a > span) {
+  max-width: 0;
+  display: inline-block;
+  opacity: 0;
+}
+
+
 .logoWrap {
-  
+  background: #002140;
+  transition: all .3s;
+  height: 64px;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 4px;
+  padding-left: 24px;
+}
+
+:global(.ant-layout-sider-collapsed) .logoWrap > h1 {
+  max-width: 0;
+  display: inline-block;
+  opacity: 0;
 }
 
 .logo {
   height: 25px;
   vertical-align: top;
+  margin-right: 4px;
+}
+
+.logoDesc {
+  color: #fff;
+  font-size: 18px;
+  font-family: "Myriad Pro","Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-weight: 600;
+  position: relative;
+  top: 3px;
+}
+
+.trigger {
+
 }
