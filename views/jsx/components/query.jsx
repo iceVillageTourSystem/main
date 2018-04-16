@@ -9,6 +9,37 @@ import DocumentTitle from 'react-document-title';
 
 import "./query.less";
 
+const dataSource = [{
+  key: '1',
+  epName: '胡彦斌',
+  phone: '13166661111',
+  address: '西湖区湖底公园1号',
+  amount:'200000000000',
+  product:'滑雪'
+}];
+
+const columns = [{
+  title: '组织名称',
+  dataIndex: 'epName',
+  key: 'epName',
+}, {
+  title: '联系电话',
+  dataIndex: 'phone',
+  key: 'phone',
+}, {
+  title: '详细地址',
+  dataIndex: 'address',
+  key: 'address',
+}, {
+  title: '营业金额',
+  dataIndex: 'amount',
+  key: 'amount',
+}, {
+  title: '主营产品',
+  dataIndex: 'product',
+  key: 'product',
+}];
+
 
 class Query extends Component {
   constructor(props) {
@@ -45,33 +76,33 @@ class Query extends Component {
         >
           <Row gutter={24}>
             <Col span={8}>
-              <FormItem label={`Field 1`}>
-                  <Input placeholder="placeholder" />
+              <FormItem label={`组织名称`}>
+                  <Input placeholder="请输入组织名称" />
               </FormItem>
             </Col>
             <Col span={8}>
-              <FormItem label={`Field 1`}>
-                  <Input placeholder="placeholder" />
+              <FormItem label={`营业金额`}>
+                  <Input placeholder="请输入营业金额" />
               </FormItem>
             </Col>
             <Col span={8}>
-              <FormItem label={`Field 1`}>
-                  <Input placeholder="placeholder" />
+              <FormItem label={`员工人数`}>
+                  <Input placeholder="请输入员工人数" />
               </FormItem>
             </Col>
           </Row>
           <Row>
             <Col span={24} style={{ textAlign: 'right' }}>
-              <Button type="primary" htmlType="submit">Search</Button>
+              <Button type="primary" htmlType="submit">搜索</Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-                Clear
+                清空
               </Button>
             </Col>
           </Row>
         </Form>
         <Table 
-            columns={[{title: 'epName', dataIndex: 'epName', key: '1'}]}
-            dataSource={[{epName: '1', key: "1" }]}
+            columns={columns}
+            dataSource={dataSource}
             />
       </div>
     );

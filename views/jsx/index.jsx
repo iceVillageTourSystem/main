@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Chart from './components/chart';
 import Info from './components/info';
 import Query from './components/query';
+import InputInfo from './components/input';
 import styles from './index.less';
 
 import {Layout, Menu} from 'antd';
@@ -29,7 +30,7 @@ class Index extends Component {
                   <img src='../img/logo.svg'/>
                 </MenuItem>
                 <MenuItem>
-                  <Link to="/">基本信息</Link>
+                  <Link to="/info">基本信息</Link>
                 </MenuItem>
                 <MenuItem>
                   <Link to="/query">查询数据</Link>
@@ -37,14 +38,18 @@ class Index extends Component {
                 <MenuItem>
                   <Link to="/chart">绘制图表</Link>
                 </MenuItem>
+                <MenuItem>
+                  <Link to="/input">提交数据</Link>
+                </MenuItem>
               </Menu>
             </Sider>
             <Layout>
               <Header>Header</Header>
               <Content>
-                <Route path="/" component={Info} />
+                <Route path="/info" component={Info} />
                 <Route path="/query" component={Query} />
                 <Route path="/chart" component={Chart} />
+                <Route path="/input" component={InputInfo} />
               </Content>
             </Layout>
           </Layout>

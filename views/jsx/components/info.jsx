@@ -15,11 +15,11 @@ class Info extends Component {
   }
 
   state = {
-    epName: 'a',
-    address: 'a',
-    phone: 'a',
-    leader: 'a',
-    epNum: 'a',
+    epName: '',
+    address: '',
+    phone: '',
+    leader: '',
+    product: '',
   }
   
 
@@ -27,28 +27,28 @@ class Info extends Component {
     return (
         <div>
         <Table 
-            columns={[{title: 'epName', dataIndex: 'epName', key: '1'}]}
+            columns={[{title: '组织名称', dataIndex: 'epName', key: '1'}]}
             dataSource={[{epName: this.state.epName, key: "1" }]}
             pagination={false} 
             />
         <Table 
-            columns={[{title: 'address', dataIndex: 'address', key: '1'}]}
-            dataSource={[{address: this.state.address, key: "1" }]}
+            columns={[{title: '组织地址', dataIndex: 'address', key: '1'}]}
+            dataSource={[{address: this.state.address, key: "2" }]}
             pagination={false} 
             />
         <Table 
-            columns={[{title: 'phone', dataIndex: 'phone', key: '1'}]}
-            dataSource={[{phone: this.state.phone, key: "1" }]}
+            columns={[{title: '联系电话', dataIndex: 'phone', key: '1'}]}
+            dataSource={[{phone: this.state.phone, key: "3" }]}
             pagination={false} 
             />
         <Table 
-            columns={[{title: 'leader', dataIndex: 'leader', key: '1'}]}
-            dataSource={[{leader: this.state.leader, key: "1" }]}
+            columns={[{title: '法人代表', dataIndex: 'leader', key: '1'}]}
+            dataSource={[{leader: this.state.leader, key: "4" }]}
             pagination={false} 
             />
         <Table 
-            columns={[{title: 'epNum', dataIndex: 'epNum', key: '1'}]}
-            dataSource={[{epNum: this.state.epNum, key: "1" }]}
+            columns={[{title: '主营产品', dataIndex: 'product', key: '1'}]}
+            dataSource={[{product: this.state.product, key: "5" }]}
             pagination={false} 
             />
         </div>
