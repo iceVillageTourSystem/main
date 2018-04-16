@@ -3,11 +3,11 @@ import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import {Table, Button } from 'antd';
+import {Table, Button, Collapse  } from 'antd';
 import DocumentTitle from 'react-document-title';
 
-const columns = [{title: 'Name', dataIndex: 'name', key: 'name'}];
-  
+const Panel = Collapse.Panel;
+
 class Info extends Component {
   constructor(props) {
     super(props)
@@ -15,43 +15,40 @@ class Info extends Component {
   }
 
   state = {
-    epName: '',
-    address: '',
-    phone: '',
-    leader: '',
-    product: '',
+    epName: 'sss',
+    address: 'sss',
+    phoneNumber: 'sssss',
+    leader: 'sss',
+    product: 'sssssasd',
   }
-  
+
+  callback = (e) => {
+
+  }
 
   render() {
+    let {epName, address, phoneNumber, leader, product} = this.state;
+
     return (
-        <div>
-        <Table 
-            columns={[{title: '组织名称', dataIndex: 'epName', key: '1'}]}
-            dataSource={[{epName: this.state.epName, key: "1" }]}
-            pagination={false} 
-            />
-        <Table 
-            columns={[{title: '组织地址', dataIndex: 'address', key: '1'}]}
-            dataSource={[{address: this.state.address, key: "2" }]}
-            pagination={false} 
-            />
-        <Table 
-            columns={[{title: '联系电话', dataIndex: 'phone', key: '1'}]}
-            dataSource={[{phone: this.state.phone, key: "3" }]}
-            pagination={false} 
-            />
-        <Table 
-            columns={[{title: '法人代表', dataIndex: 'leader', key: '1'}]}
-            dataSource={[{leader: this.state.leader, key: "4" }]}
-            pagination={false} 
-            />
-        <Table 
-            columns={[{title: '主营产品', dataIndex: 'product', key: '1'}]}
-            dataSource={[{product: this.state.product, key: "5" }]}
-            pagination={false} 
-            />
-        </div>
+        <DocumentTitle title="企业基本信息">
+            <Collapse defaultActiveKey={['1']} onChange={this.callback}>
+                <Panel header="组织名称" key="1">
+                    <p>{epName}</p>
+                </Panel>
+                <Panel header="组织地址" key="2">
+                    <p>{address}</p>
+                </Panel>
+                <Panel header="联系电话" key="3">
+                    <p>{phoneNumber}</p>
+                </Panel>
+                <Panel header="法人代表" key="4">
+                    <p>{leader}</p>
+                </Panel>
+                <Panel header="主营产品" key="5">
+                    <p>{product}</p>
+                </Panel>
+            </Collapse>
+        </DocumentTitle>
     );
   }
 }

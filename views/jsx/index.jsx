@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 // import Chart from './components/chart';
-// import Info from './components/info';
-// import Query from './components/query';
+import Info from './components/info';
+import Query from './components/query';
 // import InputInfo from './components/input';
 import styles from './index.less';
+import DocumentTitle from 'react-document-title';
 
 import {Layout, Menu, Icon} from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -31,7 +32,8 @@ class Index extends Component {
 
   render() {
     return (
-    <Router>
+      <DocumentTitle title="首页">
+      <Router>
         <Layout>
             <Sider
               width="256"
@@ -51,7 +53,7 @@ class Index extends Component {
                 >
                   
                   <MenuItem key="1">
-                    <Link to="/info">
+                    <Link to="/">
                       <Icon type="book" />
                       <span>基本信息</span>
                     </Link>
@@ -87,11 +89,14 @@ class Index extends Component {
                 />
               </Header>
               <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-               
+                <Route exact path="/" component={Info} />
+                <Route path="/query" component={Query} />
+                
               </Content>
             </Layout>
           </Layout>
       </Router>
+      </DocumentTitle>
     );
   }
 }
