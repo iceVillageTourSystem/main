@@ -16,12 +16,14 @@ class LoginAndRegister extends Component {
     this.state = {
       displayBox : 'login',
       loginUserName: '',
-      loginPassWord: ''
+      loginPassWord: '',
+      registerUserNameInput: '',
+      registerPassWord: '',
+      registerPassWordComfirm: ''
     }
   }
 
   handleClick = (e) => {
-    console.log(e.key)
     this.setState({
       displayBox : e.key
     });
@@ -50,7 +52,7 @@ class LoginAndRegister extends Component {
   }
 
   render() {
-    let {displayBox, loginUserName, loginPassWord} = this.state;
+    let {displayBox, loginUserName, loginPassWord, registerUserName, registerPassWord, registerPassWordComfirm} = this.state;
 
     let displayBoxJsx;
 
@@ -58,7 +60,7 @@ class LoginAndRegister extends Component {
       case 'login':
         let loginUserNameSuffix = loginUserName
             ? <Icon type="close-circle" onClick={(e) => {
-                this.emitEmpty(e, this.userNameInput, 'loginUserName');
+                this.emitEmpty(e, this.loginUserNameInput, 'loginUserName');
               }} />
             : null;
 
@@ -75,7 +77,7 @@ class LoginAndRegister extends Component {
               suffix={loginUserNameSuffix}
               value={loginUserName}
               onChange={e => {this.inputOnChange(e, 'loginUserName')}}
-              ref={node => this.userNameInput = node}
+              ref={node => this.loginUserNameInput = node}
             />
 
             <Input
@@ -93,8 +95,55 @@ class LoginAndRegister extends Component {
       break;
 
       case 'register':
+        let registerUserNameSuffix = registerUserName
+            ? <Icon type="close-circle" onClick={(e) => {
+                this.emitEmpty(e, this.registerUserNameInput, 'registerUserName');
+              }} />
+            : null;
+
+        let registerPassWordSuffix = registerPassWord
+            ? <Icon type="close-circle" onClick={(e) => {
+                this.emitEmpty(e, this.registerPassWordInput, 'registerPassWord');
+              }} />
+            : null;
+
+        let registerPassWordComfirmSuffix = registerPassWordComfirm
+            ? <Icon type="close-circle" onClick={(e) => {
+                this.emitEmpty(e, this.registerPassWordComfirmInput, 'registerPassWordComfirm');
+              }} />
+            : null;
+
         displayBoxJsx = (<div>
-            我是注册
+             <Input
+              placeholder="请输入新用户名"
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              suffix={registerUserNameSuffix}
+              value={registerUserName}
+              onChange={e => {this.inputOnChange(e, 'registerUserName')}}
+              ref={node => this.registerUserNameInput = node}
+            />
+
+            <Input
+              type="password"
+              placeholder="请输入密码"
+              prefix={<Icon type="edit" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              suffix={registerPassWordSuffix}
+              value={registerPassWord}
+              onChange={e => {this.inputOnChange(e, 'registerPassWord')}}
+              ref={node => this.registerPassWordInput = node}
+            />
+
+            <Input
+              type="password"
+              placeholder="请确认密码"
+              prefix={<Icon type="edit" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              suffix={registerPassWordComfirmSuffix}
+              value={registerPassWordComfirm}
+              onChange={e => {this.inputOnChange(e, 'registerPassWordComfirm')}}
+              ref={node => this.registerPassWordComfirmInput = node}
+            />
+
+            <Button type="primary" style={{width: '100%'}}>注册</Button>        
           </div>)
       break;
     }
@@ -132,7 +181,7 @@ class LoginAndRegister extends Component {
             {displayBoxJsx}
           </section>
         </div>
-      </DocumentTitle>);
+      </DocumentTitle>)
   }
 }
 
