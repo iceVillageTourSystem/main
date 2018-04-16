@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import { Table, Form, Row, Col, Input, Button, Icon } from 'antd';
 const FormItem = Form.Item;
 import DocumentTitle from 'react-document-title';
 
-import "./query.less";
+import styles from "./query.less";
 
 const dataSource = [{
   key: '1',
@@ -41,7 +41,7 @@ const columns = [{
 }];
 
 
-class Query extends Component {
+class QueryWrap extends Component {
   constructor(props) {
     super(props)
    
@@ -69,43 +69,57 @@ class Query extends Component {
 
   render() {
     return (
-      <div>
-        <Form
-          className="ant-advanced-search-form"
-          onSubmit={this.handleSearch}
-        >
-          <Row gutter={24}>
-            <Col span={8}>
-              <FormItem label={`组织名称`}>
-                  <Input placeholder="请输入组织名称" />
-              </FormItem>
-            </Col>
-            <Col span={8}>
-              <FormItem label={`营业金额`}>
-                  <Input placeholder="请输入营业金额" />
-              </FormItem>
-            </Col>
-            <Col span={8}>
-              <FormItem label={`员工人数`}>
-                  <Input placeholder="请输入员工人数" />
-              </FormItem>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24} style={{ textAlign: 'right' }}>
-              <Button type="primary" htmlType="submit">搜索</Button>
-              <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-                清空
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-        <Table 
-            columns={columns}
-            dataSource={dataSource}
-            />
-      </div>
+      <Form
+        className="ant-advanced-search-form"
+        onSubmit={this.handleSearch}
+      >
+        <Row gutter={24}>
+          <Col span={8}>
+            <FormItem label={`组织名称`}>
+                <Input placeholder="请输入组织名称" />
+            </FormItem>
+          </Col>
+          <Col span={8}>
+            <FormItem label={`营业金额`}>
+                <Input placeholder="请输入营业金额" />
+            </FormItem>
+          </Col>
+          <Col span={8}>
+            <FormItem label={`员工人数`}>
+                <Input placeholder="请输入员工人数" />
+            </FormItem>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24} style={{ textAlign: 'right' }}>
+            <Button type="primary" htmlType="submit">搜索</Button>
+            <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
+              清空
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }
+
+const QueryForm = Form.create()(QueryWrap);
+
+class Query extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div>
+        <QueryForm />
+        <Table 
+          columns={columns}
+          dataSource={dataSource}
+          />
+      </div>
+    )
+  }
+}
+
 export default Query;
