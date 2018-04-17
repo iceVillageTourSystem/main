@@ -55,3 +55,24 @@ fetch('/loginIn', {
 })
 ```
 
+
+
+## bug
+
+由于某种原因，需要对 /antd/lib/dist/index.css 内
+
+```css
+/* autoprefixer: off */
+  filter: progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false);
+```
+
+进行修改为
+
+
+```css
+/* autoprefixer: off */
+  filter: ~"progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false)";
+```
+
+
+猜测可能为 less-loader 的版本过新导致？
