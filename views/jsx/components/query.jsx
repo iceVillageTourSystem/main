@@ -40,7 +40,6 @@ const columns = [{
   key: 'product',
 }];
 
-
 class QueryWrap extends Component {
   constructor(props) {
     super(props)
@@ -67,38 +66,50 @@ class QueryWrap extends Component {
     this.setState({ expand: !expand });
   }
 
+  getFields = () => {
+    const { getFieldDecorator } = this.props.form;
+    const inputValue = ['组织名称', '营业金额', '员工人数'];
+    const cd = [];
+
+    for(let i = 0; i<3; i++) {
+      cd.push(
+        <Col span={8} key={i}>
+          <FormItem label={inputValue[i]}>
+            {getFieldDecorator(inputValue[i], {
+              rules: [{
+                required: true,
+                message: '请输入内容',
+              }]
+            })(
+              <Input placeholder={`请输入${inputValue[i]}`} />
+            )}
+          </FormItem>
+        </Col>
+      )
+    }
+    return (cd)
+  }
+
   render() {
     return (
-      <Form
-        className="ant-advanced-search-form"
-        onSubmit={this.handleSearch}
-      >
-        <Row gutter={24}>
-          <Col span={8}>
-            <FormItem label={`组织名称`}>
-                <Input placeholder="请输入组织名称" />
-            </FormItem>
-          </Col>
-          <Col span={8}>
-            <FormItem label={`营业金额`}>
-                <Input placeholder="请输入营业金额" />
-            </FormItem>
-          </Col>
-          <Col span={8}>
-            <FormItem label={`员工人数`}>
-                <Input placeholder="请输入员工人数" />
-            </FormItem>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24} style={{ textAlign: 'right' }}>
-            <Button type="primary" htmlType="submit">搜索</Button>
-            <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-              清空
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+      <div className={styles.formWrap}>
+        <Form
+          className="ant-advanced-search-form"
+          onSubmit={this.handleSearch}
+        >
+          <Row gutter={24}>
+            {this.getFields()}
+          </Row>
+          <Row>
+            <Col span={24} style={{ textAlign: 'right' }}>
+              <Button type="primary" htmlType="submit">搜索</Button>
+              <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
+                清空
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </div>
     );
   }
 }
@@ -111,13 +122,16 @@ class Query extends Component {
   }
   render() {
     return (
-      <div>
-        <QueryForm />
+      <DocumentTitle title="查询数据">
+        <div>
+          <QueryForm />
         <Table 
           columns={columns}
           dataSource={dataSource}
           />
-      </div>
+        </div>
+        
+      </DocumentTitle>
     )
   }
 }

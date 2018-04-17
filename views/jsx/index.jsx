@@ -3,10 +3,11 @@ import { render } from "react-dom";
 import { Provider, connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
-// import Chart from './components/chart';
 import Info from './components/info';
 import Query from './components/query';
-// import InputInfo from './components/input';
+import Chart from './components/chart';
+import InputInfo from './components/input';
+
 import styles from './index.less';
 import DocumentTitle from 'react-document-title';
 
@@ -30,6 +31,10 @@ class Index extends Component {
     });
   }
 
+  getNowHashRouter = () => {
+    return [window.location.hash.replace(/\#(.+)/, (s, r) => r)];
+  }
+
   render() {
     return (
       <DocumentTitle title="首页">
@@ -49,28 +54,28 @@ class Index extends Component {
                 <Menu
                   theme={"dark"}
                   mode="inline"
-                  defaultSelectedKeys={['1']}
+                  defaultSelectedKeys={this.getNowHashRouter()}
                 >
                   
-                  <MenuItem key="1">
+                  <MenuItem key="/">
                     <Link to="/">
                       <Icon type="book" />
                       <span>基本信息</span>
                     </Link>
                   </MenuItem>
-                  <MenuItem key="2">
+                  <MenuItem key="/query">
                     <Link to="/query">
                       <Icon type="pie-chart" />
                       <span>查询数据</span>
                     </Link>
                   </MenuItem>
-                  <MenuItem key="3">
+                  <MenuItem key="/chart">
                     <Link to="/chart">
                       <Icon type="area-chart" />
                       <span>绘制图表</span>
                     </Link>
                   </MenuItem>
-                  <MenuItem>
+                  <MenuItem key="/input">
                     <Link to="/input">
                       <Icon type="edit" />
                       <span>提交数据</span>
@@ -91,6 +96,8 @@ class Index extends Component {
               <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
                 <Route exact path="/" component={Info} />
                 <Route path="/query" component={Query} />
+                <Route path="/chart" component={Chart} />
+                <Route path="/input" component={InputInfo} />
                 
               </Content>
             </Layout>
@@ -102,8 +109,3 @@ class Index extends Component {
 }
 
 export default Index;
-
-// <Route path="/info" component={Info} />
-// <Route path="/query" component={Query} />
-// <Route path="/chart" component={Chart} />
-// <Route path="/input" component={InputInfo} />
